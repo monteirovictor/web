@@ -1,8 +1,11 @@
 import React from 'react';
 
+//nossos componentes 
+import Header from '../../components/Header';
+
 function Home() {
   return (
-    <h1>Você estar na Home </h1>
+    <Header/>
   );
 }
 
