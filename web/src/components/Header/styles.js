@@ -41,5 +41,31 @@ a{
     }
 }
 
+#notification{
+    img{
+        width:25px;
+        height:30px;
+    }
+    span{
+        background:#fff;
+        color:#EE6B26;
+        padding:3px 7px;
+        border-radius:50%;
+        position: relative;
+        top:-20px;
+        right:10px;
+    }
 
+    &:hover{
+        opacity:0.5;
+    }
+
+    
+}
+
+.dividir::after{
+        content:"|";
+        margin:0 10px;
+        color:#fff;
+    }
 `;
