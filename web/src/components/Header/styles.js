@@ -8,6 +8,7 @@ border-bottom: 5px solid #EE6B26;
 display:flex;
 `;
 
+
 export const LeftSide =  styled.div`
 
 width:50%;
@@ -40,6 +41,7 @@ a{
         color:#EE6B26;
     }
 }
+
 
 #notification{
     img{
