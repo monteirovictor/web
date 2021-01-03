@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const Container =  styled.div`
-width:260px;
+width:240px;
 height:60px;
 background:${props=>props.actived?'#ee6b26':'#20265F'};
 display:flex;
 flex-direction:column;
 justify-content:space-around;
-padding:10px;
-border-radius:5px;
+padding:5px;
+border-radius:10px;
 cursor: pointer;
 
 img{
