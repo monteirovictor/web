@@ -18,7 +18,16 @@ function Home() {
         <button type="button" onClick={()=>setFilterActived("month")}><FilterCard title="Mês" actived={filterActived==='month'} /></button>
         <button type="button" onClick={()=>setFilterActived("year")}><FilterCard title="Ano" actived={filterActived==='year'} /></button>
       </S.FilterArea>
+      <S.Title><h3>Tarefas</h3></S.Title>
       <S.Content>
+        <TaskCard/>
+        <TaskCard/>
+        <TaskCard/>
+        <TaskCard/>
+        <TaskCard/>
+        <TaskCard/>
+        <TaskCard/>
+        <TaskCard/>
         <TaskCard/>
       </S.Content>
         <Footer/></S.Container>
