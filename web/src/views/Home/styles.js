@@ -17,3 +17,9 @@ button{
     border:none;
 }
 `;
+
+export const Content =  styled.div`
+width:100%;
+
+
+`;
