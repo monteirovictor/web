@@ -1,4 +1,6 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
+
+import api from '../../services/api';
 
 import * as S from './styles';
 //nossos componentes 
@@ -7,7 +9,19 @@ import Footer from '../../components/Footer';
 import FilterCard from '../../components/FilterCard';
 import TaskCard from '../../components/TaskCard';
 function Home() {
-  const [filterActived,setFilterActived]=useState('today');
+  const [filterActived,setFilterActived]=useState('all');
+
+  const [tasks,setTasks]=useState([]);
+
+  async function loadTasks(){
+    await api.get(`/task/filter/${filterActived}/00:19:B9:FB:E2:58`)
+    .then(response=>{
+        setTasks(response.data)
+    });
+  }
+    useEffect(()=>{
+      loadTasks();
+    },[filterActived])
   return (
       <S.Container>
         <Header/>
@@ -20,15 +34,12 @@ function Home() {
       </S.FilterArea>
       <S.Title><h3>Tarefas</h3></S.Title>
       <S.Content>
-        <TaskCard/>
-        <TaskCard/>
-        <TaskCard/>
-        <TaskCard/>
-        <TaskCard/>
-        <TaskCard/>
-        <TaskCard/>
-        <TaskCard/>
-        <TaskCard/>
+        {
+          tasks.map(t=>(
+            <TaskCard/>
+            ))
+        }
+       
       </S.Content>
         <Footer/></S.Container>
   );
