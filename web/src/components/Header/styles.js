@@ -32,6 +32,12 @@ display:flex;
 align-items:center;
 justify-content:flex-end;
 
+button{
+    background:none;
+    border:none;
+    cursor: pointer;
+}
+
 a{
     color:#fff;
     font-weight:bold;

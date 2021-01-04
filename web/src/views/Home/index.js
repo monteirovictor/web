@@ -26,8 +26,12 @@ function Home() {
   async function lateVerify(){
     await api.get(`/task/filter/late/00:19:B9:FB:E2:58`)
     .then(response=>{
-        setLateCount(response.data.lenght)
+        setLateCount(response.data.length)
     });
+  }
+
+  function Notification(){
+    setFilterActived('late');
   }
 
     useEffect(()=>{
@@ -36,7 +40,7 @@ function Home() {
     },[filterActived])
   return (
       <S.Container>
-        <Header lateCount={lateCount}/>
+        <Header lateCount={lateCount} clickNotification={Notification}/>
       <S.FilterArea>
         <button type="button" onClick={()=>setFilterActived("all")}><FilterCard title="Todos" actived={filterActived==='all'}/></button>
         <button type="button" onClick={()=>setFilterActived("today")}><FilterCard title="Hoje" actived={filterActived==='today'}/></button>
@@ -44,7 +48,7 @@ function Home() {
         <button type="button" onClick={()=>setFilterActived("month")}><FilterCard title="Mês" actived={filterActived==='month'} /></button>
         <button type="button" onClick={()=>setFilterActived("year")}><FilterCard title="Ano" actived={filterActived==='year'} /></button>
       </S.FilterArea>
-      <S.Title><h3>Tarefas</h3></S.Title>
+      <S.Title><h3>{filterActived ==='late'? 'TAREFAS ATRASADAS': 'TAREFAS'}</h3></S.Title>
       <S.Content>
         {
           tasks.map(t=>(

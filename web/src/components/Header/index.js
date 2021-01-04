@@ -5,7 +5,7 @@ import logo from '../../assets/logo.png';
 
 import bell from '../../assets/bell.png';
 
-function Header({lateCount}) {
+function Header({lateCount,clickNotification}) {
   return (
     <S.Container>
       <S.LeftSide>
@@ -18,10 +18,10 @@ function Header({lateCount}) {
         <span className="dividir"/>
         <a href="">Sincronizar Celular</a>
         <span className="dividir"/>
-        <a href="" id="notification">
-          <img src={bell} alt="notificacão"/>
+        <button onClick={clickNotification} id="notification">
+          <img src={bell} alt="notificação"/>
           <span>{lateCount}</span>
-        </a>
+        </button>
       </S.RightSide>
     </S.Container>
   );
