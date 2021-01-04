@@ -5,7 +5,7 @@ import logo from '../../assets/logo.png';
 
 import bell from '../../assets/bell.png';
 
-function Header() {
+function Header({lateCount}) {
   return (
     <S.Container>
       <S.LeftSide>
@@ -20,7 +20,7 @@ function Header() {
         <span className="dividir"/>
         <a href="" id="notification">
           <img src={bell} alt="notificacão"/>
-          <span>5</span>
+          <span>{lateCount}</span>
         </a>
       </S.RightSide>
     </S.Container>

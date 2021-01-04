@@ -9,9 +9,11 @@ import Footer from '../../components/Footer';
 import FilterCard from '../../components/FilterCard';
 import TaskCard from '../../components/TaskCard';
 function Home() {
-  const [filterActived,setFilterActived]=useState('all');
 
+  //Variavél de Estado
+  const [filterActived,setFilterActived]=useState('all');
   const [tasks,setTasks]=useState([]);
+  const [lateCount,setLateCount]=useState();
 
   async function loadTasks(){
     await api.get(`/task/filter/${filterActived}/00:19:B9:FB:E2:58`)
@@ -19,12 +21,22 @@ function Home() {
         setTasks(response.data)
     });
   }
+
+
+  async function lateVerify(){
+    await api.get(`/task/filter/late/00:19:B9:FB:E2:58`)
+    .then(response=>{
+        setLateCount(response.data.lenght)
+    });
+  }
+
     useEffect(()=>{
       loadTasks();
+      lateVerify();
     },[filterActived])
   return (
       <S.Container>
-        <Header/>
+        <Header lateCount={lateCount}/>
       <S.FilterArea>
         <button type="button" onClick={()=>setFilterActived("all")}><FilterCard title="Todos" actived={filterActived==='all'}/></button>
         <button type="button" onClick={()=>setFilterActived("today")}><FilterCard title="Hoje" actived={filterActived==='today'}/></button>
