@@ -38,6 +38,8 @@ function Home() {
       loadTasks();
       lateVerify();
     },[filterActived])
+
+    
   return (
       <S.Container>
         <Header lateCount={lateCount} clickNotification={Notification}/>

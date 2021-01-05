@@ -7,8 +7,9 @@ import typeIcons from '../../utils/typeIcons';
 
 function TaskCard({type,title,when}){
 
-  const date=useMemo(()=>format(new Date(when),'dd/MM/yyy'));
+  const date=useMemo(()=>format(new Date(when),'dd/MM/yyyy'));
   const hour=useMemo(()=>format(new Date(when),'HH:mm'));
+
     return  (
         <S.Container>
         <S.TopCard><img src={typeIcons[type]} alt="icone da tarefa"/></S.TopCard>
