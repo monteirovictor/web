@@ -16,7 +16,7 @@ function Home() {
   const [lateCount,setLateCount]=useState();
 
   async function loadTasks(){
-    await api.get(`/task/filter/${filterActived}/00:19:B9:FB:E2:58`)
+    await api.get(`/task/filter/${filterActived}/11:11:11:11:11:11`)
     .then(response=>{
         setTasks(response.data)
     });
@@ -24,7 +24,7 @@ function Home() {
 
 
   async function lateVerify(){
-    await api.get(`/task/filter/late/00:19:B9:FB:E2:58`)
+    await api.get(`/task/filter/late/11:11:11:11:11:11`)
     .then(response=>{
         setLateCount(response.data.length)
     });
