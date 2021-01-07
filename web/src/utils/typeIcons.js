@@ -12,7 +12,7 @@ import iconSport from '../assets/sport.png';
 
 
 const typeIcons = [
-    null, iconDefault,iconFooteball,iconFood,iconJob,iconParty,iconParty,iconStudy,
+    iconDefault,iconFooteball,iconFood,iconJob,iconParty,iconParty,iconStudy,
     iconShopping,iconTravel,iconTravel
 ];
 

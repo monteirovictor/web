@@ -11,7 +11,7 @@ import TypeIcons from '../../utils/typeIcons';
 function Task() {
 
 const [lateCount,setLateCount]=useState();
- 
+const[type,setType]=useState();
 
   async function lateVerify(){
     await api.get(`/task/filter/late/11:11:11:11:11:11`)
@@ -36,10 +36,26 @@ const [lateCount,setLateCount]=useState();
         <S.Form>
             <S.TypeIcons>
             {
-                TypeIcons()
+                TypeIcons.map((icon,index)=>(
+
+                  index>0 && 
+                  
+                  <button typ="button" onClick={()=>setType(index)} >
+                  <img src={icon} alt="Tipo de Tarefa" 
+                  className={type && type !== index && 'inative'}/>
+                  </button>
+                ))
             }
             </S.TypeIcons>
+            <S.Input>
+              <span>Título</span>
+              <input type="text" placeholder="Título da Tarefa"/>
+            </S.Input>
 
+            <S.TextArea>
+              <span>Título</span>
+              <textarea rows={5} placeholder="Detalhes da Tarefa"/>
+            </S.TextArea>
          </S.Form>
         <Footer/>
         </S.Container>
