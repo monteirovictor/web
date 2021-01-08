@@ -7,6 +7,8 @@ import * as S from './styles';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import TypeIcons from '../../utils/typeIcons';
+import iconCalendar from '../../assets/calendar.png';
+import iconClock from '../../assets/clock.png';
 
 function Task() {
 
@@ -53,10 +55,30 @@ const[type,setType]=useState();
             </S.Input>
 
             <S.TextArea>
-              <span>Título</span>
+              <span>Detalhes</span>
               <textarea rows={5} placeholder="Detalhes da Tarefa"/>
             </S.TextArea>
+            <S.Input>
+              <span>Data</span>
+              <input type="date" placeholder="Data"/>
+              
+            </S.Input>
+            <S.Input>
+              <span>Hora</span>
+              <input type="time" />
+             
+            </S.Input>
+
+            <S.Opcao>
+              <div>
+              <input type="checkbox"/>
+              <span>Concluído</span>
+              </div>
+              <button type="button">Excluir</button>
+            </S.Opcao>
+            <S.Save><button type="button">Salvar</button></S.Save>
          </S.Form>
+
         <Footer/>
         </S.Container>
   );
