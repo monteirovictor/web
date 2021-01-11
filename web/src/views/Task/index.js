@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+import {Redirect} from 'react-router-dom';
 import {format} from 'date-fns';
 import api from '../../services/api';
 
@@ -12,6 +13,7 @@ import iconClock from '../../assets/clock.png';
 
 function Task({match}) {
 
+  const[redirect,setRedirect]=useState(false);
 const [lateCount,setLateCount]=useState();
 const[type,setType]=useState();
 const[id,setId]=useState();
@@ -42,6 +44,19 @@ const[macaddress,setMacaddress]=useState('11:11:11:11:11:11');
   }
 
   async function save(){
+
+    if (match.params.id) {
+      await api.put(`/task/${match.params.id}`,{
+        macaddress,
+        done,
+        type,
+        title,
+        description,
+        when:`${date}T${hour}:00.000`
+      }).then(()=>
+        setRedirect(true)
+      )
+    }else{
     await api.post(`/task`,{
       macaddress,
       type,
@@ -49,8 +64,9 @@ const[macaddress,setMacaddress]=useState('11:11:11:11:11:11');
       description,
       when:`${date}T${hour}:00.000`
     }).then(()=>
-      alert('cadastrada')
-    )
+    setRedirect(true)
+
+    )}
     
   }
   
@@ -64,9 +80,8 @@ const[macaddress,setMacaddress]=useState('11:11:11:11:11:11');
     
   return (
       <S.Container>
+       { redirect && <Redirect to="/"/>}
         <Header lateCount={lateCount}/>
-
-
         <S.Form>
             <S.TypeIcons>
             {
