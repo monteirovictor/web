@@ -85,7 +85,15 @@ const[macaddress,setMacaddress]=useState('11:11:11:11:11:11');
     
   }
   
+  async function remove(){
 
+    const res = window.confirm('Deseja realmente remover a tarefa?')
+    if(res == true){
+      await api.delete(`/task/${match.params.id}`).
+      then(()=>setRedirect(true));
+    }
+ }
+ 
     useEffect(()=>{
       
       lateVerify();
@@ -138,7 +146,7 @@ const[macaddress,setMacaddress]=useState('11:11:11:11:11:11');
               <input type="checkbox" checked={done} onChange={()=>setDone(!done)}/>
               <span>Concluído</span>
               </div>
-              <button type="button">Excluir</button>
+            {match.params.id && <button type="button" onClick={remove}>Excluir</button>}  
             </S.Opcao>
             <S.Save><button type="button" onClick={save}>Salvar</button></S.Save>
          </S.Form>
