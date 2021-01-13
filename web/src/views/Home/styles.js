@@ -23,6 +23,7 @@ width:100%;
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
+margin-bottom:70px;
 
 a{
     text-decoration:none;

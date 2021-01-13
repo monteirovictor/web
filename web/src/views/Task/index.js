@@ -35,15 +35,30 @@ const[macaddress,setMacaddress]=useState('11:11:11:11:11:11');
     await api.get(`/task/${match.params.id}`)
     .then(response=>{
      setType(response.data.type)
+     setDone(response.data.done)
      setTitle(response.data.title)
      setDescription(response.data.description)
      setDate(format(new Date(response.data.when),'yyyy-MM-dd'))
      setHour(format(new Date(response.data.when),'HH:mm'))
+     
     })
     
   }
 
   async function save(){
+
+     //validação
+
+     if (!title) 
+     return alert("Você precisa informar o título")
+     else if(!description)
+     return alert("Você precisa informar a descrição da tarrefa")
+     else if(!type)
+     return alert("Você precisa selecionar o tipo da tarefa")
+     else if(!date)
+     return alert("Você precisa definir o tipo da tarefa")
+     else if(!hour)
+     return alert("Você precisa definir a hora da tarefa")
 
     if (match.params.id) {
       await api.put(`/task/${match.params.id}`,{

@@ -14,6 +14,9 @@ flex-direction:column;
 margin:20px;
 cursor: pointer;
 transition:all 0.3 ease;
+
+opacity: ${props=>props.done ? 0.5 : 1};
+
 &:hover{
     opacity:0.5;
 }
