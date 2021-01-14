@@ -7,14 +7,13 @@ import Footer from '../../components/Footer';
 function QrCode() {
     return (
     <S.Container>
-        <Header>
+        <Header/>
             <S.Content>
                 <h1>Capture o QRCODE</h1>
                 <S.QrCodeArea></S.QrCodeArea>
                 <p>Suas atividades serão sincronizadas com a do celular</p>
             </S.Content>
             <Footer/>
-        </Header>
     </S.Container>)
 }
 
