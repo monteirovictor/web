@@ -9,6 +9,9 @@ import bell from '../../assets/bell.png';
 
 import api from '../../services/api';
 
+import isConnected from '../../utils/isConnected';
+
+
 function Header({clickNotification}) {
 
   const [lateCount,setLateCount]=useState();
@@ -18,6 +21,11 @@ function Header({clickNotification}) {
     .then(response=>{
         setLateCount(response.data.length)
     });
+  }
+
+  async function logout(){
+    localStorage.removeItem('@todo/macaddress');
+    window.location.reload();
   }
 
 useEffect(()=>{
@@ -33,7 +41,11 @@ useEffect(()=>{
         <span className="dividir"/>
         <Link to="/task">Nova Tarefa</Link>
         <span className="dividir"/>
+        {!isConnected ?
         <Link to="/qrcode">Sincronizar Celular</Link>
+        :
+        <button type="button" id="btn" onClick={logout}>Sair</button>
+}
         {
           lateCount &&
           <>

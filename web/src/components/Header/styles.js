@@ -76,4 +76,16 @@ a{
         margin:0 10px;
         color:#fff;
     }
+
+    #btn{
+    font-size:16px;
+    color:#fff;
+    font-weight:bold;
+    text-decoration:none;
+    margin:0 10px;
+    &:hover{
+        color:#EE6B26;
+    }
+    
+}
 `;

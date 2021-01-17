@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react';
 import {Redirect} from 'react-router-dom';
 import {format} from 'date-fns';
 import api from '../../services/api';
+import isConnected from '../../utils/isConnected';
+
 
 import * as S from './styles';
 //nossos componentes 
@@ -88,10 +90,10 @@ const[macaddress,setMacaddress]=useState('11:11:11:11:11:11');
  }
  
     useEffect(()=>{
-      
-     
+      if (!isConnected)
+      setRedirect(true);
       LoadTaskDetails();
-    },[])
+    },[LoadTaskDetails])
 
     
   return (

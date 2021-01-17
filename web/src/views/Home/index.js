@@ -1,7 +1,9 @@
 import React,{useState,useEffect} from 'react';
 
 import api from '../../services/api';
-import {Link} from 'react-router-dom';
+import isConnected from '../../utils/isConnected';
+
+import {Link,Redirect} from 'react-router-dom';
 import * as S from './styles';
 //nossos componentes 
 import Header from '../../components/Header';
@@ -13,7 +15,7 @@ function Home() {
   //Variavél de Estado
   const [filterActived,setFilterActived]=useState('all');
   const [tasks,setTasks]=useState([]);
-  
+  const [redirect,setRedirect]=useState(false);
 
   async function loadTasks(){
     await api.get(`/task/filter/${filterActived}/11:11:11:11:11:11`)
@@ -31,12 +33,15 @@ function Home() {
 
     useEffect(()=>{
       loadTasks();
-      
+     if (!isConnected)
+       setRedirect(true);
+
     },[filterActived])
 
     
   return (
       <S.Container>
+      { redirect && <Redirect to="/qrcode"/>}
         <Header  clickNotification={Notification}/>
       <S.FilterArea>
         <button type="button" onClick={()=>setFilterActived("all")}><FilterCard title="Todos" actived={filterActived==='all'}/></button>
